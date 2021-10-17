@@ -75,12 +75,18 @@ class SlotsController extends ResourceController
 
                 $response_code = ResponseInterface::HTTP_OK;
 
+                $url = base_url();
+
+                // Add stuff to payload
+                $slot[0]['code_slot'] = "&lt;div class='fumigationsolutionsads' data-ad-slot='{$id}'&gt;&lt;/div&gt;";
+                $slot[0]['code_script'] = "&lt;script type='text/javascript' src='{$url}/load-ads.js'&gt;&lt;/script&gt;";
+
                 return Services::response()
                     ->setJSON(
                         [
                             'status' => 'SUCCESS',
                             'code' => $response_code,
-                            'data' => $slot,
+                            'data' => $slot[0],
                         ]
                     )
                     ->setStatusCode($response_code);
@@ -104,6 +110,7 @@ class SlotsController extends ResourceController
     public function addSlot()
     {
         $request = Services::request();
+        helper('custom_helper');
 
         $rules = [
             "name" => [
@@ -120,14 +127,14 @@ class SlotsController extends ResourceController
             $response_code = ResponseInterface::HTTP_BAD_REQUEST;
 
             return Services::response()
-                ->setJSON(
-                    [
-                        'status' => 'FAIL',
-                        'code' => $response_code,
-                        'errors' => $this->validator->getErrors()
-                    ]
-                )
-                ->setStatusCode($response_code);
+            ->setJSON(
+                [
+                    'status' => 'FAIL',
+                    'code' => $response_code,
+                    'errors' => validationErrors($this->validator->getErrors())
+                ]
+            )
+            ->setStatusCode($response_code);
 
         endif;
 
@@ -221,6 +228,8 @@ class SlotsController extends ResourceController
 
         $name = $request->getVar('name');
 
+        $slot = $slot[0];
+        
         $formData = [
             "id" => $slot['id'],
             'name' => esc($name)

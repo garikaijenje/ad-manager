@@ -18,6 +18,7 @@ class AdsController extends ResourceController
 
     public function getAds()
     {
+        
         $model = new AdsModel();
 
         try {
@@ -76,7 +77,7 @@ class AdsController extends ResourceController
                         [
                             'status' => 'SUCCESS',
                             'code' => $response_code,
-                            'data' => $ad,
+                            'data' => $ad[0],
                         ]
                     )
                     ->setStatusCode($response_code);
@@ -342,7 +343,9 @@ class AdsController extends ResourceController
 
         try {
 
-            $ad = $model->find($id);
+            // exit(var_dump($id));
+            $ad = $model->single($id);
+
 
             if (!$ad) {
 

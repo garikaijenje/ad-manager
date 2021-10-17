@@ -71,12 +71,28 @@ class SlotsModel extends Model
             // convert id to int
             $record['id'] = (int)$record['id'];
             // $record['ads'] = $this->filteredAds($adsModel->where('slot_id', $record['id'])->findAll());
-            $record['ads'] = $this->filteredAds($adsModel->slotAds(1));
+            $record['ads'] = $this->filteredAds($adsModel->slotAds($record['id']));
             // $record['ads'] = $adsModel->where('slot_id', $record['id'])->findAll();
 
             // remove dates
             // unset($record['created_at']);
             // unset($record['updated_at']);
+
+            $impressions = 0;
+            $clicks = 0;
+
+            $ads = $adsModel->slotAds($record['id']);
+            foreach ($ads as $ad){
+                $impressions += $ad['impressions'];
+                $clicks += $ad['clicks'];
+            }
+
+            $record['total_ads'] = count($ads);
+            $record['total_impressions'] = $impressions;
+            $record['total_clicks'] = $clicks;
+
+            // exit(var_dump($ads));
+
 
             array_push($filteredData,$record);
         }

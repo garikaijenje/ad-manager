@@ -51,6 +51,7 @@ class AdsModel extends Model
         $result = $this->asArray()
             ->select('ads.*,slots.name as slot_name')
             ->join('slots', 'slots.id = ads.slot_id')
+            ->orderBy('ads.id', 'DESC')
             ->get()
             ->getResult();
 
@@ -80,6 +81,7 @@ class AdsModel extends Model
             ->select('*')
             ->where(['slot_id' => $slot_id])
             // ->limit(1)
+            ->orderBy('id', 'DESC')
             ->get()
             ->getResult();
 
@@ -107,6 +109,25 @@ class AdsModel extends Model
             // remove dates
             // unset($record['created_at']);
             // unset($record['updated_at']);
+
+            
+
+            $start = strtotime($record['start']);
+            $end = strtotime($record['end']);
+
+            if (time() >= $start && time() < $end) {
+                $record['status'] = 'Active';
+            }elseif (time() < $start){
+                $record['status'] = 'Pending';
+            }elseif(time() > $end){
+                $record['status'] = 'Expired';
+            }
+
+            $record['start'] = date("d M Y",$start);
+            $record['end'] = date("d M Y",$end);
+
+            $record['start_date'] = date("Y-m-d",$start);
+            $record['end_date'] = date("Y-m-d",$end);
 
             array_push($filteredData, $record);
         }

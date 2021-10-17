@@ -60,7 +60,9 @@ const Header = ({
     return classes;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "header-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/logo.jpg",
     style: {
       maxWidth: '100%',
@@ -171,8 +173,8 @@ const Stats = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ApiRequest": () => (/* binding */ ApiRequest),
-/* harmony export */   "handleApiResponse": () => (/* binding */ handleApiResponse),
-/* harmony export */   "handleApiError": () => (/* binding */ handleApiError)
+/* harmony export */   "handleSuccess": () => (/* binding */ handleSuccess),
+/* harmony export */   "handleErrors": () => (/* binding */ handleErrors)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -227,38 +229,22 @@ const ApiRequest = {
     return API.delete(endpoint, setHeaders(token, contentType)).then(async response => await success(response)).catch(error => failure(error));
   }
 };
-const handleApiResponse = async response => {
-  let result = {};
-
-  if (response.status === 200) {
-    result.status = "SUCCESS";
-    result.data = await response.data;
-  } else if (response.status === 400) {
-    result.status = "FAIL";
-    result.data = await response.data;
-  } else {
-    result.status = "FAIL";
-    result.message = "Could not establish connection.";
-  } // console.log(result)
-
-
-  return result;
+const handleSuccess = response => {
+  return response.data;
 };
-const handleApiError = error => {
-  let result = {};
+const handleErrors = response => {
+  var _response$response$da;
 
-  if (error.response) {
-    result.status = "FAIL";
-    result.data = error.response.data;
-  } else {
-    result.status = "FAIL";
-    result.message = error.message;
+  if (response.response === undefined) {
+    window.location.replace('/');
   }
 
-  return result;
+  return (_response$response$da = response.response.data.errors) !== null && _response$response$da !== void 0 ? _response$response$da : [{
+    error: response.response.data.message
+  }];
 }; // Usage Example
 
-const usageExample = () => {
+function usageExample() {
   ApiRequest.post({
     endpoint: 'auth/login',
     // token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
@@ -267,7 +253,7 @@ const usageExample = () => {
     success: response => {},
     failure: response => {}
   });
-};
+}
 
 /***/ })
 

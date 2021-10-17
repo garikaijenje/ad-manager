@@ -54,14 +54,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "API_URL": () => (/* binding */ API_URL)
 /* harmony export */ });
 // define your environment
-const ENVIRONMENT = "development"; // "development" or "production"
+const ENVIRONMENT = "production"; // "development" or "production"
 // API URLs
 
 const developmentApiUrl = "http://ad-manager.local/api/";
-const productionApiUrl = ""; // Localstorage Key Identifiers
+const productionApiUrl = "http://fs.itguy.co.zw/api/"; // Localstorage Key Identifiers
 
 const AppConst = {
-  'token': '@admanager:token'
+  'token': '@admanagerprod:token'
 }; // Don't touch this
 
 const API_URL = ENVIRONMENT === "development" ? developmentApiUrl : productionApiUrl;
@@ -95,17 +95,19 @@ const GlobalContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createC
 function GlobalContextProvider(props) {
   const [token, setToken] = (0,_hooks_usePersistedState__WEBPACK_IMPORTED_MODULE_2__["default"])(_Config__WEBPACK_IMPORTED_MODULE_1__.AppConst.token, '');
   const history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (token) localStorage.setItem(_Config__WEBPACK_IMPORTED_MODULE_1__.AppConst.token, token);
   }, [token]);
 
-  const redirect = (to, flashMessage = null) => {
+  const redirect = (to, flashMessage = null, finalDestination = null) => {
     if (!flashMessage) {
       history.push(to);
     } else {
       history.push({
         pathname: to,
-        flash: flashMessage
+        flash: flashMessage,
+        finalDestination: finalDestination
       });
     }
   };
@@ -137,7 +139,8 @@ function GlobalContextProvider(props) {
     login,
     redirect,
     logout,
-    clearFlashMessage
+    clearFlashMessage,
+    location
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GlobalContext.Provider, {
     value: globalParams
@@ -169,14 +172,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Home = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("react_pages_Home_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Home */ "./react/pages/Home.js")));
-const Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "react_pages_Login_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Login */ "./react/pages/Login.js")));
-const Slots = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("react_pages_Slots_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Slots */ "./react/pages/Slots.js")));
-const Slot = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("react_pages_Slot_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Slot */ "./react/pages/Slot.js")));
-const Ads = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("react_pages_Ads_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Ads */ "./react/pages/Ads.js")));
-const Stats = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("react_pages_Stats_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Stats */ "./react/pages/Stats.js")));
+const Home = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_react-spinners_PulseLoader_js"), __webpack_require__.e("react_pages_Home_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Home */ "./react/pages/Home.js")));
+const Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_formik_dist_formik_esm_js-node_modules_yup_es_index_js"), __webpack_require__.e("react_pages_Login_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Login */ "./react/pages/Login.js")));
+const Slots = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_formik_dist_formik_esm_js-node_modules_yup_es_index_js"), __webpack_require__.e("vendors-node_modules_react-spinners_PulseLoader_js"), __webpack_require__.e("vendors-node_modules_luxon_build_cjs-browser_luxon_js-node_modules_moment_locale_af_js-node_m-4fedf0"), __webpack_require__.e("react_components_Forms_js-react_layouts_Page_js-node_modules_moment_locale_sync_recursive_"), __webpack_require__.e("react_pages_Slots_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Slots */ "./react/pages/Slots.js")));
+const Slot = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_formik_dist_formik_esm_js-node_modules_yup_es_index_js"), __webpack_require__.e("vendors-node_modules_react-spinners_PulseLoader_js"), __webpack_require__.e("vendors-node_modules_luxon_build_cjs-browser_luxon_js-node_modules_moment_locale_af_js-node_m-4fedf0"), __webpack_require__.e("vendors-node_modules_react-html-parser_lib_index_js"), __webpack_require__.e("react_components_Forms_js-react_layouts_Page_js-node_modules_moment_locale_sync_recursive_"), __webpack_require__.e("react_pages_Slot_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Slot */ "./react/pages/Slot.js")));
+const Ads = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_formik_dist_formik_esm_js-node_modules_yup_es_index_js"), __webpack_require__.e("vendors-node_modules_react-spinners_PulseLoader_js"), __webpack_require__.e("vendors-node_modules_luxon_build_cjs-browser_luxon_js-node_modules_moment_locale_af_js-node_m-4fedf0"), __webpack_require__.e("react_components_Forms_js-react_layouts_Page_js-node_modules_moment_locale_sync_recursive_"), __webpack_require__.e("react_pages_Ads_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Ads */ "./react/pages/Ads.js")));
+const Ad = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_axios_index_js"), __webpack_require__.e("vendors-node_modules_formik_dist_formik_esm_js-node_modules_yup_es_index_js"), __webpack_require__.e("vendors-node_modules_react-spinners_PulseLoader_js"), __webpack_require__.e("vendors-node_modules_luxon_build_cjs-browser_luxon_js-node_modules_moment_locale_af_js-node_m-4fedf0"), __webpack_require__.e("vendors-node_modules_react-html-parser_lib_index_js"), __webpack_require__.e("react_components_Forms_js-react_layouts_Page_js-node_modules_moment_locale_sync_recursive_"), __webpack_require__.e("react_pages_Ad_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Ad */ "./react/pages/Ad.js")));
 const PageNotFound = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "react_pages_PageNotFound_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/PageNotFound */ "./react/pages/PageNotFound.js")));
 const ForgotPassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "react_pages_ForgotPassword_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ForgotPassword */ "./react/pages/ForgotPassword.js")));
+const Logout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "react_pages_Logout_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Logout */ "./react/pages/Logout.js")));
+const Redirect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "react_pages_Redirect_js").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/Redirect */ "./react/pages/Redirect.js")));
 
 
 
@@ -210,9 +215,17 @@ const Routes = () => {
     security: 'private',
     path: '/ads'
   }, {
-    component: Stats,
+    component: Ad,
     security: 'private',
-    path: '/stats'
+    path: '/ads/:id'
+  }, {
+    component: Logout,
+    security: 'public',
+    path: '/logout'
+  }, {
+    component: Redirect,
+    security: 'private',
+    path: '/redirect'
   }]; // Fallback route
 
   routes.push({
@@ -257,8 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
- // import "../components/AppLoader.css";
+ // import PulseLoader from "react-spinners/PulseLoader";
 
 const AppLoader = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -311,6 +323,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isObjectEmpty": () => (/* binding */ isObjectEmpty),
 /* harmony export */   "DisplayFormikState": () => (/* binding */ DisplayFormikState)
 /* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
 const isEmpty = val => {
   return val == '' || val == null ? true : false;
 };
@@ -321,21 +335,33 @@ const isObjectEmpty = obj => {
 
   return true;
 };
-const DisplayFormikState = props => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+const DisplayFormikState = ({
+  values,
+  handleChange,
+  handleSubmit,
+  setFieldValue,
+  errors,
+  touched,
+  handleBlur,
+  isValid,
+  dirty,
+  resetForm,
+  isSubmitting
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: {
       margin: '1rem 0',
       background: '#f6f8fa',
       padding: '.5rem'
     }
-  }, /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     style: {
       marginBottom: 10,
       fontWeight: 'bold'
     }
-  }, "Injected Formik props (the form's state)"), /*#__PURE__*/React.createElement("div", {
+  }, "Injected Formik props (the form's state)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: {}
-  }, /*#__PURE__*/React.createElement("code", null, "touched:"), " ", JSON.stringify(props.touched, null, 2)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("code", null, "errors:"), " ", JSON.stringify(props.errors, null, 2)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("code", null, "values:"), " ", JSON.stringify(props.values, null, 2)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("code", null, "isSubmitting:"), " ", JSON.stringify(props.isSubmitting, null, 2))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "touched:"), " ", JSON.stringify(touched, null, 2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "errors:"), " ", JSON.stringify(errors, null, 2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "values:"), " ", JSON.stringify(values, null, 2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "isSubmitting:"), " ", JSON.stringify(isSubmitting, null, 2))));
 };
 
 /***/ }),
@@ -371,7 +397,7 @@ const ProtectedRoute = ({
     render: props => token ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
       to: {
         pathname: '/login',
-        flash: 'Please Login First'
+        flash: 'Please Login First.'
       }
     }) // authenticated ? <Component {...props} /> : <Redirect to='/login' />
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import PulseLoader from "react-spinners/PulseLoader";
-// import "../components/AppLoader.css";
+// import PulseLoader from "react-spinners/PulseLoader";
 
 const AppLoader = () => {
   return (

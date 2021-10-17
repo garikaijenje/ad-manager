@@ -7,7 +7,7 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
   // console.log("AUTH", authenticated)
   return (
     <Route {...rest} render={(props) => (
-      token ? <Component {...props} /> : <Redirect to={{ pathname: '/login', flash: 'Please Login First' }} />
+      token ? <Component {...props} /> : <Redirect to={{ pathname: '/login', flash: 'Please Login First.' }} />
       // authenticated ? <Component {...props} /> : <Redirect to='/login' />
      
     )} />

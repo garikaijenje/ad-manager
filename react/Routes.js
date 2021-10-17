@@ -9,9 +9,11 @@ const Login = React.lazy(() => import("./pages/Login"))
 const Slots = React.lazy(() => import("./pages/Slots"))
 const Slot = React.lazy(() => import("./pages/Slot"))
 const Ads = React.lazy(() => import("./pages/Ads"))
-const Stats = React.lazy(() => import("./pages/Stats"))
+const Ad = React.lazy(() => import("./pages/Ad"))
 const PageNotFound = React.lazy(() => import("./pages/PageNotFound"))
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"))
+const Logout = React.lazy(() => import("./pages/Logout"))
+const Redirect = React.lazy(() => import("./pages/Redirect"))
 
 import AppLoader from './components/AppLoader';
 
@@ -30,7 +32,9 @@ const Routes = () => {
     { component: Slots, security: 'private', path: '/slots' },
     { component: Slot, security: 'private', path: '/slots/:id' },
     { component: Ads, security: 'private', path: '/ads' },
-    { component: Stats, security: 'private', path: '/stats' },
+    { component: Ad, security: 'private', path: '/ads/:id' },
+    { component: Logout, security: 'public', path: '/logout' },
+    { component: Redirect, security: 'private', path: '/redirect' },
   ];
 
   // Fallback route

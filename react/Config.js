@@ -1,13 +1,13 @@
 // define your environment
-export const ENVIRONMENT = "development" // "development" or "production"
+export const ENVIRONMENT = "production" // "development" or "production"
 
 // API URLs
 const developmentApiUrl = "http://ad-manager.local/api/";
-const productionApiUrl = "";
+const productionApiUrl = "http://fs.itguy.co.zw/api/";
 
 // Localstorage Key Identifiers
 export const AppConst = {
-  'token': '@admanager:token'
+  'token': '@admanagerprod:token'
 }
 
 // Don't touch this

@@ -17,7 +17,7 @@ const activeLink = (identifier) => {
 }
 
   return (
-    <>
+    <div className="header-container">
       <center><img src="/logo.jpg" style={{maxWidth:'100%',marginBottom:30}}/></center>
       <div className="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
         <div>
@@ -30,7 +30,7 @@ const activeLink = (identifier) => {
           <button onClick={() => logout()} className="btn btn-sm pd-x-15 btn-primary btn-uppercase mg-l-5" style={{backgroundColor:'#000', borderColor: '#000'}}><i data-feather="link" className="wd-10 mg-r-5"></i> Logout</button>
         </div>
       </div>
-    </>
+    </div>
 
   );
 };

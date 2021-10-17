@@ -102,8 +102,8 @@ class UsersController extends ResourceController
         $data = [
             'status' => 'SUCCESS',
             'code' => 200,
-            'user_token' => $jwt->generateToken(30, $tokenPayload),
-            'refresh_token' => $jwt->generateToken(60, $tokenPayload)
+            'user_token' => $jwt->generateToken(60, $tokenPayload),
+            'refresh_token' => $jwt->generateToken(90, $tokenPayload)
         ];
 
         $response_code = ResponseInterface::HTTP_OK;

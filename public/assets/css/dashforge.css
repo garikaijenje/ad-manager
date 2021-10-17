@@ -41322,4 +41322,20 @@ a.bg-twitter:hover, a.bg-twitter:focus, button.bg-twitter:hover, button.bg-twitt
 
  .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
     background-color:#000;
-  }
+}
+
+.header-container{
+border: 2px solid #a01c27;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    }
+
+    .header-container h1{
+      text-transform: uppercase;
+    }
+
+
+.ui-datepicker, .select2-container{
+  z-index: 99999999 !important;
+}

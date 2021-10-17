@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 // import { Apis } from './utils/Apis';
 import { AppConst } from './Config';
 
-import { useHistory, withRouter } from "react-router-dom";
+import { useHistory, withRouter, useLocation } from "react-router-dom";
 import usePersistedState from './hooks/usePersistedState';
 
 
@@ -14,18 +14,20 @@ function GlobalContextProvider(props) {
   const [token, setToken] = usePersistedState(AppConst.token, '');
 
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     if (token) localStorage.setItem(AppConst.token, token);
   }, [token])
 
-  const redirect = (to, flashMessage = null) => {
+  const redirect = (to, flashMessage = null, finalDestination = null) => {
     if (!flashMessage) {
       history.push(to);
     } else {
       history.push({
         pathname: to,
         flash: flashMessage,
+        finalDestination: finalDestination
       });
     }
   }
@@ -53,7 +55,7 @@ function GlobalContextProvider(props) {
   let globalParams = {
     token, setToken,
     login, redirect,logout,
-    clearFlashMessage
+    clearFlashMessage, location
   }
 
   return (

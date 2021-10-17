@@ -60,7 +60,9 @@ const Header = ({
     return classes;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "header-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/logo.jpg",
     style: {
       maxWidth: '100%',
@@ -153,31 +155,31 @@ __webpack_require__.r(__webpack_exports__);
 
 const ForgotPassword = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_layouts_Page__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    class: "content content-fixed content-auth-alt"
+    className: "content content-fixed content-auth-alt"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    class: "container d-flex justify-content-center ht-100p"
+    className: "container d-flex justify-content-center ht-100p"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    class: "mx-wd-300 wd-sm-450 ht-100p d-flex flex-column align-items-center justify-content-center"
+    className: "mx-wd-300 wd-sm-450 ht-100p d-flex flex-column align-items-center justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    class: "wd-80p wd-sm-500 mg-b-15"
+    className: "wd-80p wd-sm-500 mg-b-15"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/logo.jpg",
-    class: "img-fluid",
+    className: "img-fluid",
     alt: ""
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
-    class: "tx-20 tx-sm-24"
+    className: "tx-20 tx-sm-24"
   }, "Reset your password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    class: "tx-color-03 mg-b-30 tx-center"
+    className: "tx-color-03 mg-b-30 tx-center"
   }, "Enter your email address and we will send you a new password."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    class: "wd-100p d-flex flex-column flex-sm-row mg-b-40"
+    className: "wd-100p d-flex flex-column flex-sm-row mg-b-40"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
-    class: "form-control wd-sm-250 flex-fill",
+    className: "form-control wd-sm-250 flex-fill",
     placeholder: "Enter your email address"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    class: "btn btn-brand-02 mg-sm-l-10 mg-t-10 mg-sm-t-0"
+    className: "btn btn-brand-02 mg-sm-l-10 mg-t-10 mg-sm-t-0"
   }, "Reset Password")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    class: "tx-12 tx-color-03"
+    className: "tx-12 tx-color-03"
   }, "Back to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/login"
   }, "Login"))))));
