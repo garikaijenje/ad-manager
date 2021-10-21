@@ -18,8 +18,6 @@ if (!function_exists('arrayToObject')) {
   }
 }
 
-
-
 if (!function_exists('validationErrors')) {
 
   function validationErrors($errors)

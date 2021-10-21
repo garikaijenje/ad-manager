@@ -181,7 +181,7 @@ const Ads = () => {
     href: "#addAd",
     className: "btn btn-xs btn-success btn-uppercase",
     "data-toggle": "modal"
-  }, "Add New Ad"))), location.flash && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "Add New Advert"))), location.flash && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "alert alert-success mt-4",
     role: "alert"
   }, " ", location.flash, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ApiErrors__WEBPACK_IMPORTED_MODULE_6__["default"], {

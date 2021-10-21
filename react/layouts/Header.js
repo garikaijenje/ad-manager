@@ -23,7 +23,7 @@ const activeLink = (identifier) => {
         <div>
           <h1 className="mg-b-0 tx-spacing--1">{title}</h1>
         </div>
-        <div className="d-none d-md-block">
+        <div className="d-md-block">
           <Link to="/" className={activeLink("dashboard")}>Dashboard</Link>
           <Link to="/slots" className={activeLink("slots")}>Slots</Link>
           <Link to="/ads" className={activeLink("ads")}>Ads</Link>

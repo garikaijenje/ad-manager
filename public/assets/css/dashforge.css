@@ -41336,6 +41336,6 @@ border: 2px solid #a01c27;
     }
 
 
-.ui-datepicker, .select2-container{
+.modal-body > .ui-datepicker, .modal-body > .select2-container{
   z-index: 99999999 !important;
 }

@@ -396,6 +396,7 @@ const Forms = ({slot, ad}) => {
                     <input type="file" className="form-control" name="image" id="image" onBlur={() => setFieldTouched('image', true)} onChange={(event) => {
                       setFieldValue("image", event.currentTarget.files[0]);
                     }}/>
+                    <span style={{fontSize:10}}>Only image file types (png, jpg, gif, jpeg) are allow and a maximum of <strong>2MB</strong> fileze size.</span>
                     <ErrorMessage name="image" component={TextError} />
                   </div>
                 </div>
@@ -459,6 +460,7 @@ const Forms = ({slot, ad}) => {
                     <input type="file" className="form-control" name="image" id="image" onBlur={() => setFieldTouched('image', true)} onChange={(event) => {
                       setFieldValue("image", event.currentTarget.files[0]);
                     }} />
+                    <span style={{ fontSize: 10 }}>Only image file types (png, jpg, gif, jpeg) are allow and a maximum of <strong>2MB</strong> fileze size.</span>
                     <ErrorMessage name="image" component={TextError} />
                   </div>
                 </div>

@@ -52,7 +52,7 @@ const Ads = () => {
 
     <div className="card-header bd-b-0 pd-t-20 pd-lg-t-25 pd-l-20 pd-lg-l-25 d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-center">
         <div className="btn-group mg-t-20 mg-sm-t-0">
-          <button href="#addAd" className="btn btn-xs btn-success btn-uppercase" data-toggle="modal">Add New Ad</button>
+          <button href="#addAd" className="btn btn-xs btn-success btn-uppercase" data-toggle="modal">Add New Advert</button>
         </div>
       </div>
 
